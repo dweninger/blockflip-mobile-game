@@ -1,0 +1,115 @@
+[gd_scene load_steps=14 format=3 uid="uid://djd4klrtm1g68"]
+
+[ext_resource type="Script" path="res://Scenes/skin_selection_menu.gd" id="1_422pm"]
+[ext_resource type="FontFile" uid="uid://da74gwoduep04" path="res://Assets/joystix monospace.otf" id="1_objdh"]
+[ext_resource type="Texture2D" uid="uid://bwlfusknf4aat" path="res://Assets/Sprites/block.png" id="2_3kylh"]
+[ext_resource type="Texture2D" uid="uid://dlypmy8p1gpkh" path="res://Assets/Sprites/blockredskin.png" id="3_lpd8y"]
+[ext_resource type="Texture2D" uid="uid://82o0hrbog4ub" path="res://Assets/Sprites/blockgreenskin.png" id="4_syj20"]
+[ext_resource type="Texture2D" uid="uid://df4vf8uuybj4l" path="res://Assets/Sprites/blockchocolateswirlskin.png" id="5_u70i5"]
+[ext_resource type="Texture2D" uid="uid://degmrhft43kat" path="res://Assets/Sprites/blockhazardskin.png" id="6_pe67k"]
+[ext_resource type="Texture2D" uid="uid://el3iyeg7rxmp" path="res://Assets/Sprites/blockwoodskin.png" id="7_c673x"]
+[ext_resource type="Texture2D" uid="uid://bbgfiypslud8e" path="res://Assets/Sprites/blockmarbelskin.png" id="8_4va3i"]
+[ext_resource type="Texture2D" uid="uid://8jnr4il0qd52" path="res://Assets/Sprites/blockleafskin.png" id="9_ydihp"]
+[ext_resource type="Texture2D" uid="uid://wqllweog1071" path="res://Assets/Sprites/blockpastelskin.png" id="10_nunni"]
+[ext_resource type="Texture2D" uid="uid://wh1lgxgs27cs" path="res://Assets/Sprites/blockselector.png" id="11_qdtes"]
+[ext_resource type="Script" path="res://Scenes/Cursor.gd" id="12_x5gt0"]
+
+[node name="SkinSelectionMenu" type="CanvasLayer"]
+script = ExtResource("1_422pm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 6
+
+[node name="BlueBlock" type="Button" parent="MarginContainer/MarginContainer/GridContainer" groups=["Skins"]]
+layout_mode = 2
+icon = ExtResource("2_3kylh")
+
+[node name="RedBlock" type="Button" parent="MarginContainer/MarginContainer/GridContainer" groups=["Skins"]]
+layout_mode = 2
+icon = ExtResource("3_lpd8y")
+
+[node name="GreenBlock" type="Button" parent="MarginContainer/MarginContainer/GridContainer" groups=["Skins"]]
+layout_mode = 2
+icon = ExtResource("4_syj20")
+
+[node name="ChocoBlock" type="Button" parent="MarginContainer/MarginContainer/GridContainer" groups=["Skins"]]
+layout_mode = 2
+icon = ExtResource("5_u70i5")
+
+[node name="HazardBlock" type="Button" parent="MarginContainer/MarginContainer/GridContainer" groups=["Skins"]]
+layout_mode = 2
+icon = ExtResource("6_pe67k")
+
+[node name="WoodBlock" type="Button" parent="MarginContainer/MarginContainer/GridContainer" groups=["Skins"]]
+layout_mode = 2
+icon = ExtResource("7_c673x")
+
+[node name="MarbelBlock" type="Button" parent="MarginContainer/MarginContainer/GridContainer" groups=["Skins"]]
+layout_mode = 2
+icon = ExtResource("8_4va3i")
+
+[node name="LeafBlock" type="Button" parent="MarginContainer/MarginContainer/GridContainer" groups=["Skins"]]
+layout_mode = 2
+icon = ExtResource("9_ydihp")
+
+[node name="PastelBlock" type="Button" parent="MarginContainer/MarginContainer/GridContainer" groups=["Skins"]]
+layout_mode = 2
+icon = ExtResource("10_nunni")
+
+[node name="Cursor" type="Sprite2D" parent="MarginContainer/MarginContainer/GridContainer"]
+visible = false
+position = Vector2(-163, -32)
+texture = ExtResource("11_qdtes")
+script = ExtResource("12_x5gt0")
+
+[node name="SelectButton" type="Button" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_objdh")
+theme_override_font_sizes/font_size = 30
+text = "Select"
+
+[node name="PurchaseButton" type="Button" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_objdh")
+theme_override_font_sizes/font_size = 30
+text = "Purchase"
+
+[node name="BackButton" type="Button" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_objdh")
+theme_override_font_sizes/font_size = 25
+text = "<--"
+
+[connection signal="pressed" from="MarginContainer/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]

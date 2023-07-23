@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bma4k1ljc8lvk"]
+
+[ext_resource type="Script" path="res://Scenes/player.gd" id="1_rs5f4"]
+[ext_resource type="Texture2D" uid="uid://bwlfusknf4aat" path="res://Assets/Sprites/block.png" id="2_2ky8d"]
+[ext_resource type="AudioStream" uid="uid://de7prcdswhy7x" path="res://Assets/Sounds/swosh-01.wav" id="3_jydeq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2nxcs"]
+size = Vector2(56, 56)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_rs5f4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_2ky8d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2nxcs")
+
+[node name="swoosh" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jydeq")

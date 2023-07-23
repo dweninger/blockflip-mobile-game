@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://by3atg773mnew"]
+
+[ext_resource type="FontFile" uid="uid://da74gwoduep04" path="res://Assets/joystix monospace.otf" id="1_jh7dk"]
+[ext_resource type="Script" path="res://Scenes/menu_ui.gd" id="1_x5hnl"]
+
+[node name="MenuUI" type="CanvasLayer"]
+script = ExtResource("1_x5hnl")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 32
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="StartButton" type="Button" parent="MarginContainer/Panel/MarginContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_jh7dk")
+theme_override_font_sizes/font_size = 30
+text = "START"
+
+[node name="SkinsButton" type="Button" parent="MarginContainer/Panel/MarginContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_jh7dk")
+theme_override_font_sizes/font_size = 30
+text = "SKINS"
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_jh7dk")
+theme_override_font_sizes/font_size = 45
+text = "Block Flip
+High Score: 0"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/SkinsButton" to="." method="_on_skins_button_pressed"]

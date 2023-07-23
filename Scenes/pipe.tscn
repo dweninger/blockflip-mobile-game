@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cytr2cl1aqrp8"]
+
+[ext_resource type="Script" path="res://Scenes/pipe.gd" id="1_to67e"]
+[ext_resource type="Texture2D" uid="uid://2byu4r0v22kx" path="res://Assets/Sprites/obsticlegreen.png" id="2_3oy24"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pho1"]
+size = Vector2(72, 258)
+
+[node name="Pipe" type="Node2D"]
+script = ExtResource("1_to67e")
+
+[node name="Pipe" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pipe"]
+texture = ExtResource("2_3oy24")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pipe"]
+shape = SubResource("RectangleShape2D_3pho1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="Pipe" to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
